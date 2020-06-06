@@ -1,8 +1,9 @@
-package units;
+package units.impl;
 
 import frame.MyFrame;
 import units.impl.duck;
 import units.impl.lily;
+import units.pond_model;
 
 import java.io.IOException;
 import java.util.*;
@@ -12,7 +13,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class pond {
+public class pond implements pond_model {
 
     public static Integer pond_width=800;
     public static Integer pond_highth=800;
@@ -106,7 +107,7 @@ public class pond {
         return lily_list;
     }
 
-    public void add_duck(duck e) {
+    private void add_duck(duck e) {
         duck_writeLock.lock();
         try {
             duck_list.add(e);
@@ -127,11 +128,8 @@ public class pond {
         }
     }
 
-    public void sort_lily(){
 
-    }
-
-    public void sort_duck(duck chief_duck){
+    private void sort_duck(duck chief_duck){
         /**
          * duck对于队长鸭的相对距离升序排序
          */
@@ -158,7 +156,7 @@ public class pond {
     }
 
     //产生鸭鸭领袖list
-    public void create_chieflist(duck chief_duck){
+    private void create_chieflist(duck chief_duck){
         duck_writeLock.lock();
         has_chief=chief_duck;
         chief_duck.ischief=true;
@@ -220,7 +218,7 @@ public class pond {
         }
     }
 
-    public void remove_lily(lily e){
+    private void remove_lily(lily e){
         //duck_writeLock.lock();
         try {
             System.out.println("eat !!!!!!!!"+e.x+", "+e.y);
@@ -243,7 +241,7 @@ public class pond {
     //鸭鸭吃Lily,输入最近的Lily，修改Lily表
 
 
-    public boolean duck_eatlily(duck duck_eat,lily lily_eat){
+    private boolean duck_eatlily(duck duck_eat,lily lily_eat){
         duck_writeLock.lock();
         try {
             if(lily_eat.getduckpos(duck_eat)<=(lily_eat.width+lily_eat.heights+duck_eat.width+duck_eat.higth)/3){
@@ -266,31 +264,8 @@ public class pond {
 
     }
 
-    public void removediedduck(){
-        //duck_writeLock.lock();
-        try {
-            for (duck duckc : duck_list){
-                if(!duckc.isalive || !duckc.visible){
-                    if(has_chief==duckc){
-                        has_chief=null;
-                    }
-                    duckc.visible=false;
-                    //remove_duck(duckc);
-                    System.out.println("死亡鸭鸭??");
-                    continue;
-                }
-            }
-        }catch (Exception e){
-            System.out.println("移除死亡鸭鸭失败。。。。。。。。。。。。。");
-            e.printStackTrace();
 
-        }
-        finally {
-            //duck_writeLock.unlock();
-        }
-    }
-
-    public void updategoal(){
+    private void updategoal(){
         duck_writeLock.lock();
         try {
             duck duckpass;
@@ -407,7 +382,7 @@ public class pond {
                 }
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     System.out.println("管理鸭鸭线程错误");
                     e.printStackTrace();

@@ -1,7 +1,6 @@
 package units.impl;
 
 import units.lilies;
-import units.pond;
 
 import java.util.Random;
 
@@ -21,13 +20,5 @@ public class lily implements lilies {
         return Math.abs((x+width/2)-(dd.getX()+dd.width/2))+Math.abs((y+heights/2)-(dd.getY()+dd.higth/2));
     }
 
-    @Override
-    public void draw() {
 
-    }
-
-    @Override
-    public void eat() {
-
-    }
 }

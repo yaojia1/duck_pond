@@ -1,22 +1,16 @@
 package frame;
 
-import units.duckpool;
 import units.impl.duck;
 import units.impl.lily;
-import units.lilies;
-import units.lilypool;
-import units.pond;
+import units.impl.pond;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyFrame extends JFrame implements Runnable {
@@ -27,8 +21,7 @@ public class MyFrame extends JFrame implements Runnable {
     public static final int HEIGHT = pond.pond_highth;
 
     private Mpanel panel;
-    private lilypool lilies1 ;
-    private duckpool duckpool1;
+
 
     private List<lily> lilylist;
     private List<duck> duckList;
@@ -41,14 +34,6 @@ public class MyFrame extends JFrame implements Runnable {
     private String file_whistle;
     private musicStuff musicObject2;
 
-    public MyFrame(duckpool duckpool , lilypool lilypool) throws IOException {
-        super();
-        this.duckpool1=duckpool;
-        this.lilies1=lilypool;
-        //this.lilylist=duckpool.lilypool2.get();
-        //this.duckList=duckpool.getducks();
-        initFrame();
-    }
 
     public MyFrame(pond apond) throws IOException {
         super();
@@ -185,6 +170,7 @@ public class MyFrame extends JFrame implements Runnable {
             File folderInput = null;
             if(ischief){
                 musicObject2.playMusic(file_whistle);
+                drawString(g,x,y-5);
                 if(angel==180){
                     folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\chief_r.png");
                 }else if (angel==0){
@@ -228,6 +214,22 @@ public class MyFrame extends JFrame implements Runnable {
             g.drawImage(img,x,y, w,h ,null);
 
         }
+
+        private void drawString(Graphics g,Integer x,Integer y) {
+            Graphics2D g2d = (Graphics2D) g.create();
+
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            // 设置字体样式, null 表示使用默认字体, Font.PLAIN 为普通样式, 大小为 25px
+            g2d.setFont(new Font(null, Font.PLAIN, 10));
+
+            // 绘制文本, 其中坐标参数指的是文本绘制后的 左下角 的位置
+            // 首次绘制需要初始化字体, 可能需要较耗时
+            g2d.drawString("Whistling!", x, y);
+
+            g2d.dispose();
+        }
+
 
         public BufferedImage Rotate(Image src , int angel) {
             int src_width = src.getWidth(null);

@@ -6,8 +6,8 @@ public interface duck_model {
     Integer initwidth=50;
     Integer inithighth=50;
 
-    double MAX_chiefsize = 2;
-    double MAX_normalsize = 1.8;
+    double MAX_chiefsize = 1.8;
+    double MAX_normalsize = 1.5;
 
     Integer speed = 2;
 

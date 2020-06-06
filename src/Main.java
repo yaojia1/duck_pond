@@ -1,17 +1,13 @@
-import frame.MyFrame;
-import frame.musicStuff;
-import units.duckpool;
-import units.lilypool;
-import units.pond;
+import units.impl.pond;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 
-public class Mainthread {
+public class Main {
     //private lilypool lilies = new lilypool();
     //private duckpool duckpool=new duckpool();
 
-    public Mainthread() {
+    public Main() {
     }
 
     public static void main(String[] args) throws IOException {
