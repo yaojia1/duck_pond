@@ -60,10 +60,10 @@ public class MyFrame extends JFrame implements Runnable {
         panel = new Mpanel(this);
 
         setContentPane(panel);
-        filepath = "./music/1.wav";
+        filepath = "src/music/1.wav";
         musicObject = new musicStuff();
 
-        file_whistle="./music/whistle.wav";
+        file_whistle="src/music/whistle.wav";
         musicObject2 = new musicStuff();
 
 
@@ -82,7 +82,7 @@ public class MyFrame extends JFrame implements Runnable {
             //System.out.println("重绘");
            // explode.play();
 
-            musicObject.playMusic(filepath);
+            //musicObject.playMusic(filepath);
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -103,7 +103,7 @@ public class MyFrame extends JFrame implements Runnable {
             super.paintComponent(g);
             validate();
             try {
-                File folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\pond.png");
+                File folderInput = new File("src\\pic\\pond.png");
 
                 BufferedImage img = ImageIO.read(folderInput);
                 //int w = img.getWidth(null);
@@ -172,24 +172,24 @@ public class MyFrame extends JFrame implements Runnable {
                 musicObject2.playMusic(file_whistle);
                 drawString(g,x,y-5);
                 if(angel==180){
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\chief_r.png");
+                    folderInput = new File("src\\pic\\chief_r.png");
                 }else if (angel==0){
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\chief.png");
+                    folderInput = new File("src\\pic\\chief.png");
                 }else if (angel==90){
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\chief_0.png");
+                    folderInput = new File("src\\pic\\chief_0.png");
                 }else {
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\chief_1.png");
+                    folderInput = new File("src\\pic\\chief_1.png");
                 }
 
             }else{
                 if(angel==180){
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\duck_r.png");
+                    folderInput = new File("src\\pic\\duck_r.png");
                 }else if (angel==0){
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\duck.png");
+                    folderInput = new File("src\\pic\\duck.png");
                 }else if (angel==90){
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\duck_0.png");
+                    folderInput = new File("src\\pic\\duck_0.png");
                 }else {
-                    folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\duck_1.png");
+                    folderInput = new File("src\\pic\\duck_1.png");
                 }
             }
 
@@ -208,7 +208,7 @@ public class MyFrame extends JFrame implements Runnable {
         }
 
         private void drawImagelily(Graphics g,Integer x,Integer y, Integer w, Integer h) throws IOException {
-            File folderInput = new File("E:\\projs\\Day3\\duck_pond\\src\\pic\\lily.png");
+            File folderInput = new File("src\\pic\\lily.png");
             BufferedImage img = ImageIO.read(folderInput);
 
             g.drawImage(img,x,y, w,h ,null);
